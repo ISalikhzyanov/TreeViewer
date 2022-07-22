@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import TreeChart from "./components/TreeChart";
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:3001/data")
+            .then(r => r.json())
+            .then(res => setData(res))
+    }, [])
+    console.log(data)
+
+
+    return (
+        <React.Fragment>
+            <TreeChart data={data}/>
+
+        </React.Fragment>
+    );
+};
 
 export default App;

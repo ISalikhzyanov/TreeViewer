@@ -1,0 +1,26 @@
+{
+  "data": {
+    "title": "A",
+    "children": [{
+      "title": "B",
+      "children": [{
+        "title": "C",
+        "children": []
+      }]
+    },
+      {
+        "title": "D",
+        "children": [{
+          "title": "E",
+          "children": [{
+            "title": "F",
+            "children": [{
+              "title": "G",
+              "children": []
+            }]
+          }]
+        }]
+      }
+    ]
+  }
+}
