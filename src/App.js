@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import TreeChart from "./components/TreeChart";
 import "./App.css"
-
+import db from "./server/db.json"
 
 export default class App extends React.Component {
     constructor(props) {
@@ -11,11 +11,7 @@ export default class App extends React.Component {
         };
     }
     async componentDidMount() {
-        const response = await fetch(
-            `http://localhost:3001/data`
-
-        );
-        const newData = await response.json();
+        const newData = db.data;
         this.setState({ data: newData });
     }
     render() {
