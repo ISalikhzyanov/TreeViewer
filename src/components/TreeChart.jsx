@@ -3,6 +3,7 @@ import {select, hierarchy, tree, linkHorizontal} from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function TreeChart({data}) {
+    let text = {};
     const svgRef = useRef();
     const wrapperRef = useRef();
     const dimensions = useResizeObserver(wrapperRef);
@@ -24,6 +25,7 @@ function TreeChart({data}) {
         svg.selectAll(".node")
             .data(root.descendants())
             .join("circle")
+            .text(node=>node.data.title)
             .attr("class", "node")
             .attr("r", 15)
             .attr("fill", "black")
@@ -52,7 +54,10 @@ function TreeChart({data}) {
 
     return (
         <div ref={wrapperRef} style={{marginBottom: "2rem"}}>
-            <svg ref={svgRef}/>
+            <svg ref={svgRef} onClick={(e)=>{
+                text= e.target
+                window.alert(text.innerHTML)
+            }}/>
         </div>
     );
 }
