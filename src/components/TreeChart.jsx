@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from "react";
+import React, {useRef, useEffect} from "react";
 import {select, hierarchy, tree, linkHorizontal} from "d3";
 import useResizeObserver from "./useResizeObserver";
 
