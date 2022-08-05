@@ -3,6 +3,7 @@ import {select, hierarchy, tree, linkHorizontal} from "d3";
 import useResizeObserver from "./useResizeObserver";
 
 function TreeChart({data}) {
+    let text = {};
     const svgRef = useRef();
     const wrapperRef = useRef();
     const dimensions = useResizeObserver(wrapperRef);
@@ -21,39 +22,24 @@ function TreeChart({data}) {
             .x(node => node.y)
             .y(node=> node.x)
 
-        // svg.selectAll(".node")
-        //     .data(root.descendants())
-        //     .join("circle")
-        //     // .text(node=>node.data.title)
-        //     .attr("class", "node")
-        //     .attr("r", 15)
-        //     .attr("fill", "black")
-        //     .attr("cx", node => node.y)
-        //     .attr("cy", node => node.x);
-
-        svg.selectAll(".link")
-            .data(root.links())
-            .join("path")
-            .attr("class", "link")
-            .attr("fill", "none")
-            .attr("stroke", "black")
-            .attr("d", linkGenerator)
-
-        svg.selectAll(".label")
+        svg.selectAll(".node")
             .data(root.descendants())
-            .join("text")
-            .attr("class","label")
-            .text(node=> node.data.title)
-            .attr("text-anchor", "center")
-            .attr("font-size", 24)
-            .attr("x",node=>node.y)
-            .attr("y",node=>node.x-20)
+            .join("circle")
+            .text(node=>node.data.title)
+            .attr("class", "node")
+            .attr("r", 15)
+            .attr("fill", "black")
+            .attr("cx", node => node.y)
+            .attr("cy", node => node.x-181);
 
     }, [data, dimensions])
 
     return (
         <div ref={wrapperRef} style={{marginBottom: "2rem"}}>
-            <svg ref={svgRef}/>
+            <svg ref={svgRef} onClick={(e)=>{
+                text = e.target
+                window.alert(text.innerHTML)
+            }}/>
         </div>
     );
 }

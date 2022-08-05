@@ -2,6 +2,7 @@ import React from 'react';
 import TreeChart from "./components/TreeChart";
 import "./App.css"
 import db from "./server/db.json"
+import Nodes from "./components/Nodes";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ const {data} = this.state;
 if (data){
     return <React.Fragment>
         <TreeChart data={data}/>
+        <Nodes data={data}/>
     </React.Fragment>
 } else {return null}
     }
