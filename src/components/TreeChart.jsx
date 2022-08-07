@@ -21,15 +21,6 @@ function TreeChart({data}) {
             .x(node => node.y)
             .y(node=> node.x)
 
-        // svg.selectAll(".node")
-        //     .data(root.descendants())
-        //     .join("circle")
-        //     // .text(node=>node.data.title)
-        //     .attr("class", "node")
-        //     .attr("r", 15)
-        //     .attr("fill", "black")
-        //     .attr("cx", node => node.y)
-        //     .attr("cy", node => node.x);
 
         svg.selectAll(".link")
             .data(root.links())

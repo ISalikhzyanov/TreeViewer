@@ -14,7 +14,9 @@ export default class App extends React.Component {
     async componentDidMount() {
         const newData = db.data;
         this.setState({ data: newData });
+
     }
+
     render() {
 const {data} = this.state;
 if (data){
